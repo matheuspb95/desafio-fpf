@@ -8,7 +8,7 @@ class Processamento(models.Model):
     status = models.CharField(choices=(
         ('1', 'Processando'),
         ('2', 'Concluído'),
-    ))
-    media = models.FloatField()
-    mediana = models.FloatField()
+    ), default='Processando')
+    media = models.FloatField(default=None, null=True)
+    mediana = models.FloatField(default=None, null=True)
 
