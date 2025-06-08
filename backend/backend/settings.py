@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_celery_results',
+    'corsheaders',
     'rest_framework',
     'api', 
 ]
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -133,3 +135,9 @@ ALLOWED_HOSTS = ['*']
 
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_BROKER_URL = "amqp://{}:{}@rabbitmq_server:5672".format(os.environ.get('RABBITMQ_DEFAULT_USER'), os.environ.get('RABBITMQ_DEFAULT_PASS'))
+
+CORS_ORIGIN_ALLOW_ALL = True  # Allow all origins
+# OR
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost'
+]
