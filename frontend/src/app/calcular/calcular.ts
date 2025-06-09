@@ -1,12 +1,17 @@
 import { Component, inject } from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {HomeService} from '../home.service';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { HomeService } from '../home.service';
 
 @Component({
   selector: 'app-calcular',
   imports: [ReactiveFormsModule],
   templateUrl: './calcular.html',
-  styleUrl: './calcular.scss'
+  styleUrl: './calcular.scss',
 })
 export class Calcular {
   homeService = inject(HomeService);
@@ -23,7 +28,7 @@ export class Calcular {
     this.homeService.submitFormCalc(
       parseInt(this.applyForm.value.num1),
       parseInt(this.applyForm.value.num2),
-      parseInt(this.applyForm.value.num3),
+      parseInt(this.applyForm.value.num3)
     );
   }
 }

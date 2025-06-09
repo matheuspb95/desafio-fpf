@@ -14,6 +14,10 @@ export class HomeService {
 
   submitFormCalc(num1: number, num2: number, num3: number) {
     let numbers = { num1: num1, num2: num2, num3: num3 };
+    if (Number.isNaN(num1 + num2 + num3)){
+      alert("Please input all numbers")
+      return;
+    }
     fetch(this.api_url + 'processar', {
       method: 'POST',
       body: JSON.stringify(numbers),
@@ -31,7 +35,7 @@ export class HomeService {
 
   checkStatus(id: number): Observable<any> {
     return interval(500).pipe(
-      switchMap((count) =>
+      switchMap((count: number) =>
         fetch(this.api_url + 'status/' + id, {
           method: 'GET',
         })
@@ -47,9 +51,8 @@ export class HomeService {
               return response;
             })
           )
-          .catch((err) => console.log(err))
       ),
-      takeWhile((value) => {
+      takeWhile((value: any) => {
         return value['status'] !== 'Concluído';
       }, true)
     );
