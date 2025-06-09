@@ -1,4 +1,4 @@
-<p>resultados works!</p>
+<h3>resultados</h3>
 
 <table>
   <tr>
@@ -9,4 +9,12 @@
     <th>Média</th>
     <th>Mediana</th>
   </tr>
+    <tr *ngFor="let item of homeService.task_list">
+      <td>{{ item.num1 }}</td>
+      <td>{{ item.num2 }}</td>
+      <td>{{ item.num3 }}</td>
+      <td>{{ item.status }}</td>
+      <td>{{ item.media }}</td>
+      <td>{{ item.mediana }}</td>
+    </tr>
 </table>

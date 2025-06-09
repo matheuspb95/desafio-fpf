@@ -31,7 +31,7 @@ def status(request, id):
             proc_inst.mediana = result["mediana"]
             proc_inst.status = "Concluído"
             proc_inst.save()
-            return Response({"id": id, "status": "Concluído", "Média": result["media"], "Mediana": result["mediana"]})
+            return Response({"id": id, "status": "Concluído", "media": result["media"], "mediana": result["mediana"]})
         else:
             return Response({"id": id, "status": "Processando"})
     except TaskResult.DoesNotExist:
