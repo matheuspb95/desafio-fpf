@@ -5,10 +5,8 @@ services:
     build: ./frontend
     env_file:
       - .env
-    volumes:
-      - ./frontend/src:/app/src
     ports:
-      - 80:4200
+      - 80:80
   backend:
     build: ./backend
     command: sh -c "python manage.py migrate && 
